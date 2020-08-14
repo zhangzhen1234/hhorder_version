@@ -13,6 +13,10 @@ Vue.prototype.$api = api
 Vue.prototype.$url = url
 Vue.config.productionTip = false
 
+//引入公共组件
+import BaseScroll from "@/components/base-scroll/base-scroll.vue";
+Vue.component("BaseScroll", BaseScroll);
+
 App.mpType = 'app'
 
 const app = new Vue({

@@ -34,7 +34,7 @@
 								交付方式        
 							</view>
 							<view class="notesR right">
-								<button v-for="(item,index) in deliveryInforData.give_typeArray " :key="index" @click="deliveryMethod(item.ID,index)" :class="{'on': deliveryInforData.give_typeIndex==index?true:false}"  class="yybtn mini-btn" size="mini" type="default">{{item.NAME}}</button>
+								<button v-for="(item,index) in give_typeCodes" :key="index" @click="deliveryMethod(item.ID,index)" :class="{'on': deliveryInforData.give_typeIndex==index?true:false}"  class="yybtn mini-btn" size="mini" type="default">{{item.NAME}}</button>
 							</view>
 						</view>
 						<view class="cell row">
@@ -43,7 +43,7 @@
 							</view>
 							<view class="notesR right">
 								
-								<button v-for="(item,index) in deliveryInforData.address_typeArray " :key="index" @click="addressType(item.ID,index)" :class="{'on':deliveryInforData.address_typeIndex==index?true:false}"  class="yybtn mini-btn" size="mini" type="default">{{item.NAME}}</button>
+								<button v-for="(item,index) in address_kindCodes" :key="index" @click="addressType(item.ID,index)" :class="{'on':deliveryInforData.address_typeIndex==index?true:false}"  class="yybtn mini-btn" size="mini" type="default">{{item.NAME}}</button>
 						</view>
 						</view>
 						<view class="cell row">
@@ -132,36 +132,24 @@
 	 */
 	// import MxDatePicker from "../../../components/mx-datepicker/mx-datepicker.vue";
 	import MxDatePicker from "@/components/mx-datepicker/mx-datepicker.vue";
+	import {mapGetters} from 'vuex'
 	export default {
 		name: 'deliveryInfor',
 		props: {
 		},
 		components: {
-		            MxDatePicker
+		      MxDatePicker,
+					
 		        },
+			computed:{
+				...mapGetters(['give_typeCodes',"address_kindCodes"]),
+			},
 		data() {
 			return {
 				showPicker: false,
 				type: 'rangetime',
 				value: '',
-				deliveryInforData:{
-					give_type:null,//交付方式
-					give_typeArray:[],//交付方式
-					give_typeIndex:0,//交付方式
-					address_typeIndex:0,//交付方式
-					address:"",//	是	string	取/送货地址，没有时填写空字符串
-					address_type:0,//	是	int	地址类型，无时填0
-					address_typeArray:[],//地址类型
-					postcode:"",//	是	string	邮编，没有时填写空字符串
-					give_date:"",//	是	string	约定交期，YYYY-MM-DD
-					remark:"",//	是	string	交期备注，没有时填写空字符串
-					other:0,//	是	string	其他约定，没有时填写空字符串
-					is_self:1,//	是	int	联系人类型；1 客户自己, 0 其他
-					other_person:"",//	是	string	联系人，没有时填写空字符串
-					info:"",//	是	string	备注，没有时填写空字符串
-					is_place:0,//	是	int	二手车置换，无时填0
-					info2:"",//	是	string	二手车备注，没有时填写空字符串
-				},
+				deliveryInforData:{},
 			}
 		},
 		watch: {
@@ -173,9 +161,9 @@
 		      }
 		},
 		created() {
-			this.deliveryInforData =  this.$store.state.saleOrderDates.deliveryInforData
+			// debugger
+			this.deliveryInforData =  this.$store.state.deliveryInfo.obj
 			this.deliveryInforData.give_date = '2020-01-01'
-			this.getvalues()
 		},
 		methods: {
 			onShowDatePicker(type){//显示
@@ -189,26 +177,6 @@
 			        this[this.type] = e.value; 
 					this.deliveryInforData.give_date = e.value.replace(new RegExp("/","gm"),"-")
 			    }
-			},
-			getvalues(){
-				let self_ = this;
-				//方式
-				let give_typeCodes = self_.$store.state.give_typeCodes;
-				self_.deliveryInforData.give_typeArray = give_typeCodes;
-				give_typeCodes.forEach(function(val, index, arr){
-					if(index==0){
-						self_.deliveryInforData.give_type = val.ID
-					}
-				});
-				// 地址类型
-				let address_kindCodes = self_.$store.state.address_kindCodes;
-				self_.deliveryInforData.address_typeArray = address_kindCodes;
-				address_kindCodes.forEach(function(val, index, arr){
-					if(index==0){
-						self_.deliveryInforData.address_type = val.ID
-					}
-				});
-				
 			},
 			//交付方式
 			deliveryMethod(e,index){

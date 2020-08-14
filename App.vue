@@ -9,74 +9,12 @@ export default {
 			// 获得数据  
 			if(res.Msg=='success'){
 				this.$store.dispatch('getcodes', res.Data);
-				//this.$store.state.codes = res.Data
-				
-			// let mCodes = this.$store.state.codes;
-			// for(let data of mCodes) {
-				
-			// 	if(data.CODE=='sell_kind'){
-			// 		this.$store.state.sell_kindCodes.push(data)	//是	int	销售类型
-			// 	}
-			// 	if(data.CODE=='order_kind'){
-			// 		this.$store.state.order_kindCodes.push(data)	//是	int	订单类型
-			// 	}
-			// 	if(data.CODE=='order_channel'){this.$store.state.order_channelCodes.push(data)	//是	int	订单渠道
-			// 	}
-			// 	if(data.CODE=='order_from'){this.$store.state.order_fromCodes.push(data)	//是	int	订单来源
-			// 	}
-			// 	if(data.CODE=='pay_type'){this.$store.state.pay_typeCodes.push(data)	//是	int	付款方式
-			// 	}
-			// 	if(data.CODE=='car_type'){this.$store.state.car_typeCodes.push(data)	//是	int	车辆类型
-			// 	}
-			// 	if(data.CODE=='customer_kind'){this.$store.state.customer_kindCodes.push(data)	//是	int	客户类型
-			// 	}
-			// 	if(data.CODE=='mortgage_kind'){this.$store.state.mortgage_kindCodes.push(data)	//是	int	按揭类型
-			// 	}
-			// 	if(data.CODE=='customer_relation'){this.$store.state.customer_relationCodes.push(data)	//否	int	与客户关系
-			// 	}
-				
-			// 	if(data.CODE=='customer_from'){this.$store.state.customer_fromCodes.push(data)	//否	int	与客户关系
-			// 	}
-			// 	// // if(data.CODE=='sell_kind'){this.$store.state.car_kindCodes.push(data)	//是	int	商品分类
-			// 	// // }
-			// 	if(data.CODE=='car_pay_type'){this.$store.state.car_pay_typeCodes.push(data)	//是	int	收取方式
-			// 	}
-			// 	if(data.CODE=='car_kind'){this.$store.state.car_kindCodes.push(data)	//是	int	收取方式
-			// 	}
-				
-			// 	if(data.CODE=='payback_kind'){this.$store.state.payback_kindCodes.push(data)	//是	int	还款方式ID
-			// 	}
-			// 	if(data.CODE=='org_from'){this.$store.state.org_fromCodes.push(data)	//机构来源
-			// 	}
-			// 	if(data.CODE=='Mortgage_Limit'){this.$store.state.Mortgage_LimitCodes.push(data)	//按揭期数
-			// 	}
-				
-			// 	if(data.CODE=='Qualification_Kind'){this.$store.state.Qualification_KindCodes.push(data)	//是	int	资质ID
-			// 	}
-			// 	if(data.CODE=='insurance_kind'){this.$store.state.insurance_kindCodes.push(data)	//是	int	保险类型
-			// 	}
-			// 	// if(data.CODE=='InsuranceExtend_Kind'){this.$store.state.InsuranceExtend_KindCodes.push(data)	//是	int	延保类型ID
-			// 	// }
-			// 	// // kind	是	int	分类
-			// 	// if(data.CODE=='card_kind'){this.$store.state.card_kindCodes.push(data)	//是	int	卡券类型
-			// 	// }
-			// 	if(data.CODE=='give_type'){this.$store.state.give_typeCodes.push(data)	//是	int	交付方式
-			// 	}
-			// 	if(data.CODE=='address_kind'){this.$store.state.address_kindCodes.push(data)	//是	int	地址类型，无时填0
-			// 	}
-			// 	if(data.CODE=='subscription_type'){this.$store.state.subscription_typeCodes.push(data)	//是	int	订金方式
-			// 	}
-			// }
-			
-			
-			
 			}else{
 				uni.showToast({
 				    title: res.Msg,
 				    duration: 2000
 				})
 			}
-			// this.$store.state.codes = res.Data
 		 }).catch(res => {
 			 console.log(res)
 		 　　// 失败进行的操作

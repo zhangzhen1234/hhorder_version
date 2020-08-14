@@ -12,6 +12,7 @@
 </template>
 
 <script>
+
 	export default {
 		data() {
 			return {
@@ -19,9 +20,22 @@
 			}
 		},
 		onLoad() {
-
+		
 		},
+		created() {
+			// this.Getsell_kind();
+		},//
 		methods: {
+			// async Getsell_kind(){
+			// 	let param = {"codes":["sell_kind"]}
+			// 	await this.$api.HHPF_P_GetBaseEnumByCodes(param).then(res => {
+			// 		// 获得数据 
+			// 		console.log("获取客户档案"+res) 
+			// 	 }).catch(res => {
+			// 		 console.log(res)
+			// 	 　　// 失败进行的操作
+			// 	 })
+			// },
 			addorder(){
 				uni.navigateTo({
 				    url: '../autoSalesOrder/autoSalesOrder'

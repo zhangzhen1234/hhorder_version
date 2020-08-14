@@ -43,7 +43,7 @@ const codes = {
 			return item.NAME
 		}),//订单来源名字
 		
-		ocustomer_kindCodes:state => state.codes.filter(item=>item.CODE==="customer_kind"),//		客户类型
+		customer_kindCodes:state => state.codes.filter(item=>item.CODE==="customer_kind"),//		客户类型
 		customer_kindID:state => state.codes.filter(item=>item.CODE==="customer_kind").map(item =>
 		{
 			return item.ID
@@ -220,6 +220,17 @@ const codes = {
 			return item.ID
 		}),//车辆销售-收取方式D
 		pay_typeNAME:state => state.codes.filter(item=>item.CODE==="pay_type").map(item =>
+		{
+			return item.NAME
+		}),//保险类型名字
+		
+		
+		car_typeCodes:state => state.codes.filter(item=>item.CODE==="car_type"),//车辆销售-收取方式类型
+		car_typeID:state => state.codes.filter(item=>item.CODE==="car_type").map(item =>
+		{
+			return item.ID
+		}),//车辆销售-收取方式D
+		car_typeNAME:state => state.codes.filter(item=>item.CODE==="car_type").map(item =>
 		{
 			return item.NAME
 		}),//保险类型名字
